@@ -400,9 +400,16 @@ public class Labeler extends JFrame implements KeyListener
 
 			out.println(ipage + " " + iline + " " + ichar);
 
-			for (var page : text) for (var line : page) out.println(line);
+			int count = 0;
+			for (var page : text) for (var line : page)
+			{
+				for (char c : line) if (c!=' ') ++count;
+				out.println(line);
+			}
 
 			out.close();
+			
+			System.out.println(count + " characters labeled");
 		}
 		catch (IOException e)
 		{
